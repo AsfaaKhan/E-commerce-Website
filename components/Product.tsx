@@ -72,7 +72,7 @@ export default function Product() {
     // }
 
     // Filter Products by category
-    const filterProduct = (category: any) => {
+    const filterProduct = (category: string) => {
         const updateList = data.filter((f) => f.category === category)
         setFilter(updateList)
     }
