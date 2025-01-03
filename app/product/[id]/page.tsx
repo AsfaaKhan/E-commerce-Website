@@ -6,6 +6,9 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Image from "next/image";
 import { IoIosStar } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { addItem } from "@/redux/actions";
+
 
 interface ISingleProduct {
     id: number,
@@ -33,6 +36,19 @@ export default function Product({ params }: ProductDetailsProps) {
     const [product, setProduct] = useState<ISingleProduct | null>(null);
     const [loading, setLoading] = useState(true)
 
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+        if (product) {
+            dispatch(addItem({
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                image: product.image,
+                quantity: 0
+            }));
+        }
+    };
     useEffect(() => {
         const fetchProduct = async () => {
             setLoading(true);
@@ -50,18 +66,18 @@ export default function Product({ params }: ProductDetailsProps) {
     const Loading = () => {
         return (
             <div className="flex flex-col md:flex-row gap-10 mt-15 sm:mt-20 md:mt-28 mb-20">
-            <div className=" col-md-6 gap-20 ">
-            <Skeleton  height={400} width={300}></Skeleton>
-            </div>
-            <div className="col-md-6" style={{lineHeight:2}}>
-                <Skeleton height={50} width={300}></Skeleton>
-                <Skeleton height={75} ></Skeleton>
-                <Skeleton height={25} width={150}></Skeleton>
-                <Skeleton height={50}></Skeleton>
-                <Skeleton height={150}></Skeleton>
-                <Skeleton height={50} width={100}></Skeleton>
-                
-            </div>
+                <div className=" col-md-6 gap-20 ">
+                    <Skeleton height={400} width={300}></Skeleton>
+                </div>
+                <div className="col-md-6" style={{ lineHeight: 2 }}>
+                    <Skeleton height={50} width={300}></Skeleton>
+                    <Skeleton height={75} ></Skeleton>
+                    <Skeleton height={25} width={150}></Skeleton>
+                    <Skeleton height={50}></Skeleton>
+                    <Skeleton height={150}></Skeleton>
+                    <Skeleton height={50} width={100}></Skeleton>
+
+                </div>
             </div>
         )
     }
@@ -87,11 +103,11 @@ export default function Product({ params }: ProductDetailsProps) {
                         <div>
                             <h1 className="text-3xl font-bold uppercase">{product.category}</h1>
                         </div>
-                    
+
                         {/* Title */}
-                            <div>
-                                <p className="text-gray-600 display-5">{product.title}</p>
-                            </div>
+                        <div>
+                            <p className="text-gray-600 display-5">{product.title}</p>
+                        </div>
 
                         {/*Rating  */}
                         <div className="flex items-center  ">
@@ -105,15 +121,15 @@ export default function Product({ params }: ProductDetailsProps) {
                                 Price: ${product.price}
                             </h3>
                         </div>
-                    
-                    {/* Cart Buttons */}
+
+                        {/* Discrption */}
                         <div className="lead">
-                            {/* <p className="font-bold"> Description: </p> */}
                             {product.description}
                         </div>
 
+                        {/* Cart Buttons */}
                         <div className=" flex ">
-                            <button className=" text-dark fw-bold btn btn-outline-warning font-bold shadow-md  text-[48px] px-4 py-2">
+                            <button className=" text-dark fw-bold btn btn-outline-warning font-bold shadow-md  text-[48px] px-4 py-2" onClick={handleAddToCart}>
                                 Add To Cart
                             </button>
                             <button className="fw-bold ms-2 text-dark btn btn-outline-warning font-bold shadow-md px-4 py-2 ">
@@ -142,3 +158,5 @@ export default function Product({ params }: ProductDetailsProps) {
         </div>
     )
 }
+
+

@@ -8,17 +8,25 @@ import { RiContactsFill } from "react-icons/ri";
 import { FaBookReader } from "react-icons/fa";
 import { GiShoppingBag } from "react-icons/gi";
 import { CgLogIn } from "react-icons/cg";
-import { IoPersonAddSharp } from "react-icons/io5"; import { FaOpencart } from "react-icons/fa6";
+import { IoPersonAddSharp } from "react-icons/io5";
+import { FaOpencart } from "react-icons/fa6";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/reducers"; 
+
 
 export default function Header() {
+         const state = useSelector((state:RootState)=> state.handleAddToCart)
+
+
     const [navbar, setNavbar] = useState(false)
     const handleNavbar = () => {
         setNavbar(!navbar)
     }
+    
     return (
         <>
             {/* NAVBAR */}
-            <nav className="bg-white w-full z-10 top-0 fixed p-[20px] ">
+            <nav className="bg-white w-full z-10 top-0 fixed p-[20px]  ">
                 <div className=" mx-auto flex justify-between items-center  h-8">
                     {/* LOGO */}
                     <div className=" hover:text-yellow-400  text-2xl flex  justify-center items-center gap-2 cursor-pointer" >
@@ -65,7 +73,7 @@ export default function Header() {
                         <Link href={"/"} className="text-black hover:text-white d">
                             <div className=" flex gap-1 justify-center items-center text-center text-slate-950 hover:text-primary">
                                 <FaOpencart size={15} />
-                                Cart(0)
+                                Cart({state.length})
                             </div>
                         </Link>
                     </div>

@@ -69,7 +69,7 @@ export default function Product() {
     const ShowProducts = () => {
         return (
             <div>
-                <div className=" buttons flex gap-2 justify-center mt-10">
+                <div className=" buttons flex  flex-col md:flex-row gap-2 justify-center mt-10">
                     <button className="btn text-black btn-outline-warning" onClick={() => setFilter(data)}>All</button>
                     <button className="btn text-black btn-outline-warning" onClick={() => filterProduct("men's clothing")}>{`Men's Clothing`}</button>
                     <button className="btn  text-black btn-outline-warning" onClick={() => filterProduct("women's clothing")}>{`Women's Clothing`}</button>
