@@ -18,10 +18,10 @@ export default function Header() {
     return (
         <>
             {/* NAVBAR */}
-            <nav className="bg-blue-500 w-full z-10 top-0 fixed p-[20px] ">
+            <nav className="bg-white w-full z-10 top-0 fixed p-[20px] ">
                 <div className=" mx-auto flex justify-between items-center  h-8">
                     {/* LOGO */}
-                    <div className="text-black  text-2xl flex  justify-center items-center gap-2" >
+                    <div className=" hover:text-yellow-400  text-2xl flex  justify-center items-center gap-2 cursor-pointer" >
                         <Image
                             src="/images/2.jpg"
                             width={50}
@@ -35,36 +35,35 @@ export default function Header() {
                     </div>
                     {/* NAVBAR ITEMS */}
                     <div className="hidden md:flex justify-end gap-10 text-xl" >
-                        <Link href="/" className=" hover:text-white hover:underline text-black flex gap-2"><FaHome size={20} />Home</Link>
-                        <Link href="/aboutPage" className="hover:text-white hover:underline text-black flex gap-2"><FaBookReader size={20} />About</Link>
-                        <Link href="/shopPage" className=" hover:text-white hover:underline text-black flex gap-2" >< GiShoppingBag size={20} />Shop</Link>
-                        <Link href="/contactPage" className="hover:text-white hover:underline text-black flex gap-2"><RiContactsFill size={20} /> Contact</Link>
+                        <Link href="/" className="  hover:underline text-slate-900   hover:text-primary  flex gap-2"><FaHome size={20} />Home</Link>
+                        <Link href="/aboutPage" className=" hover:underline text-slate-900   hover:text-primary flex gap-2"><FaBookReader size={20} />About</Link>
+                        <Link href="/shopPage" className=" hover:underline text-slate-900    hover:text-primary flex gap-2" >< GiShoppingBag size={20} />Shop</Link>
+                        <Link href="/contactPage" className=" hover:underline  text-slate-900  hover:text-primary  flex gap-2"><RiContactsFill size={20} /> Contact</Link>
                     </div>
 
                     {/* HAMBURGER NAVBAR */}
-                    <div className="md:hidden p-4 flex flex-col justify-center text-center text-black items-center gap-3" onClick={handleNavbar} >
+                    <div className="md:hidden p-4 flex flex-col justify-center text-center text-yellow-400 items-center gap-3 cursor-pointer hover:text-secondary" onClick={handleNavbar}  >
                         {navbar ? <TbShoppingBagCheck size={40} /> : <TbShoppingBag size={40} />}
                     </div>
-
                     {/* Buttons */}
 
                     <div className=" flex  gap-3  ">
-                        <Link href={"/"} className="text-black hover:text-white ">
-                            <div className="flex gap-1 justify-center items-center text-center">
+                        <Link href={"/"} className="text-black hover:text-white hidden md:flex">
+                            <div className="flex gap-1 justify-center items-center text-center text-slate-950 hover:text-primary">
                                 <CgLogIn size={15} />
                                 Login
                             </div>
                         </Link>
 
-                        <Link href={"/"} className="text-black hover:text-white ">
-                            <div className="flex gap-1 justify-center items-center text-center">
+                        <Link href={"/"} className="text-black hover:text-white hidden md:flex">
+                            <div className="flex gap-1 justify-center items-center text-center text-slate-950 hover:text-primary">
                                 <IoPersonAddSharp size={10} />Resgister
                             </div>
 
                         </Link>
 
-                        <Link href={"/"} className="text-black hover:text-white ">
-                            <div className="flex gap-1 justify-center items-center text-center">
+                        <Link href={"/"} className="text-black hover:text-white d">
+                            <div className=" flex gap-1 justify-center items-center text-center text-slate-950 hover:text-primary">
                                 <FaOpencart size={15} />
                                 Cart(0)
                             </div>
@@ -73,13 +72,27 @@ export default function Header() {
                 </div>
 
                 {navbar && (
-                    <div className="md:hidden mt-4 bg-transparent p-4 flex flex-col justify-center items-center gap-4 text-center text-xl text-black" >
+                    <div className="md:hidden mt-4 bg-transparent p-4 flex flex-col justify-center items-center gap-4 text-center text-xl " >
                         <Link href="/"
-                            className="hover:text-black  text-white hover:underline flex gap-2" onClick={handleNavbar}><FaHome size={20} />Home</Link>
-                        <Link href="/aboutPage" className="hover:text-black text-white
-                         hover:underline flex gap-2" onClick={handleNavbar}><FaBookReader size={20} />About</Link>
-                        <Link href="/shopPage" className="hover:text-black   text-white hover:underline flex gap-2" onClick={handleNavbar}>< GiShoppingBag size={20} />Shop</Link>
-                        <Link href="/contactPage" className="hover:text-black  text-white  hover:underline flex gap-2" onClick={handleNavbar}><RiContactsFill size={20} />Contact</Link>
+                            className="    hover:underline flex gap-2 text-slate-900  hover:text-primary" onClick={handleNavbar}><FaHome size={20} />Home</Link>
+                        <Link href="/aboutPage" className=" 
+                         hover:underline flex gap-2  text-slate-900 hover:text-primary" onClick={handleNavbar}><FaBookReader size={20} />About</Link>
+                        <Link href="/shopPage" className="  text-slate-900 hover:text-primary  hover:underline flex gap-2" onClick={handleNavbar}>< GiShoppingBag size={20} />Shop</Link>
+                        <Link href="/contactPage" className=" text-slate-900  hover:text-primary  hover:underline flex gap-2" onClick={handleNavbar}><RiContactsFill size={20} />Contact</Link>
+                        <Link href={"/"} className="text-slate-950 hover:text-primary  ">
+                            <div className="flex gap-1 justify-center items-center text-center">
+                                <CgLogIn size={15} />
+                                Login
+                            </div>
+                        </Link>
+
+                        <Link href={"/"} className="text-slate-950 hover:text-primary">
+                            <div className="flex gap-1 justify-center items-center text-center">
+                                <IoPersonAddSharp size={10} />Resgister
+                            </div>
+
+                        </Link>
+
                     </div>
                 )}
             </nav>
