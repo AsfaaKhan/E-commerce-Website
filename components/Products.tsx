@@ -46,15 +46,15 @@ export default function Product() {
 
     const Loading = () => {
         return (
-            
-                <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
+
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
                 {[...Array(6)].map((_, index) => (
-                <div key={index} className="flex flex-col items-center justify-center">
-                    <Skeleton height={350} width={300} className="w-full" />
-                </div>
-            ))}
-                </div>
-            
+                    <div key={index} className="flex flex-col items-center justify-center">
+                        <Skeleton height={350} width={300} className="w-full" />
+                    </div>
+                ))}
+            </div>
+
         )
     }
 
@@ -63,7 +63,7 @@ export default function Product() {
         const updateList = data.filter((f) => f.category === category)
         setFilter(updateList)
     }
-  
+
     const ShowProducts = () => {
         return (
             <div>
@@ -88,7 +88,7 @@ export default function Product() {
                                     <h4 className="card-title fw-bold text-xl">{product.title.substring(0, 12)}</h4>
                                     <p className="card-text fw-bold text-2xl">
                                         ${product.price}</p>
-                                     <p className="line-clamp-2 ">{product.description}...</p>   
+                                    <p className="line-clamp-2 ">{product.description}...</p>
                                     <Link href={`/product/${product.id}`} className="card-link">Read More</Link>
                                 </div>
                             </div>
@@ -102,9 +102,13 @@ export default function Product() {
     return (
         <div>
             <Container>
-                <div className=" justify-center items-center mt-15 sm:mt-20 md:mt-28 ">
+                <div className=" justify-center items-center mt-24 md:mt-28 ">
 
-                <h1 className="text-5xl sm:text-6xl md:text-7xl   lg:text-8xl text-yellow-400 hover:text-secondary uppercase text-center items-center" style={{letterSpacing:6}}>Shop Our Latest Products</h1>
+                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  text-yellow-400 hover:text-secondary text-center ">
+                        {` "New Season, New Glamorous You"`}
+                    </p>
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl   lg:text-8xl text-yellow-400 hover:text-secondary uppercase text-center items-center" style={{ letterSpacing: 6 }}>Shop Our Latest Products</h1>
+
 
                     {
                         loading ? <Loading /> : <ShowProducts />

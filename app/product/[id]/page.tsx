@@ -66,7 +66,7 @@ export default function Product({ params }: ProductDetailsProps) {
 
     const Loading = () => {
         return (
-            <div className="flex flex-col md:flex-row gap-10 mt-15 sm:mt-20 md:mt-28 mb-20">
+            <div className="flex flex-col md:flex-row gap-10  mt-32  mb-20">
                 <div className=" col-md-6 gap-20 ">
                     <Skeleton height={400} width={300}></Skeleton>
                 </div>
