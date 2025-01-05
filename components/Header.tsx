@@ -23,7 +23,7 @@ export default function Header() {
     return (
         <>
             {/* NAVBAR */}
-            <nav className="bg-white w-full z-10 top-0 fixed p-[20px]  ">
+            <nav className="bg-slate-50 w-full z-10 top-0 fixed p-[20px]  ">
                 <div className=" mx-auto flex justify-between items-center  h-8">
                     {/* LOGO */}
                     <div className=" hover:text-yellow-400  text-2xl flex  justify-center items-center gap-2 cursor-pointer" >
