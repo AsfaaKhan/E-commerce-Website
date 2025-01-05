@@ -88,7 +88,7 @@ export default function Product({ params }: ProductDetailsProps) {
     const ShowProduct = ({ product }: { product: ISingleProduct }) => {
         return (
             <Container>
-                <div className=" mt-10 flex flex-col gap-10 md:flex-row justify-center items-center">
+                <div className=" mt-20 flex flex-col gap-10 md:flex-row justify-center items-center">
 
                     {/* Image */}
                     <div className="col-md-6">
