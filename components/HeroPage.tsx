@@ -1,11 +1,6 @@
 
 
-// components/ScrollspyComponent.tsx
-
-// import Container from "./Container";
-
 export default function Section() {
-
 
   return (
     <div>

@@ -1,10 +1,12 @@
 import React from 'react'
+import Image from 'next/image'
+
 
 const Contact = () => {
     return (
         <div>
             <div className="container mb-5">
-                <div className="row">
+                <div className="row  mt-40">
                     <div className="col-12 text-center py-4 my-4">
                         <h1>Have Some Question?</h1>
                         <hr />
@@ -12,7 +14,7 @@ const Contact = () => {
                 </div>
                 <div className="row">
                     <div className="col-md 5 d-flex justify-content-center">
-                        <img src="/imges/1" alt="Contact Us" height="300px" width="300px" />
+                        <Image src="/images/3.jpg" alt="Contact Us" height={300} width={300} />
                     </div>
                     <div className="col-md-6">
                         <form >

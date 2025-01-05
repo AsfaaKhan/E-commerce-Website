@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useEffect, useState } from "react"
 import Container from "./Container"
 import Image from "next/image"
@@ -17,10 +18,7 @@ interface IProduct {
         rate: number,
         count: number,
     }
-
 }
-
-
 
 export default function Product() {
     const [data, setData] = useState<IProduct[]>([])
@@ -69,7 +67,7 @@ export default function Product() {
     const ShowProducts = () => {
         return (
             <div>
-                <div className=" buttons flex  flex-col md:flex-row gap-2 justify-center mt-10">
+                <div className=" justify-center items-center buttons grid grid-cols-3 sm:grid-cols-5 gap-2 mt-10">
                     <button className="btn text-black btn-outline-warning" onClick={() => setFilter(data)}>All</button>
                     <button className="btn text-black btn-outline-warning" onClick={() => filterProduct("men's clothing")}>{`Men's Clothing`}</button>
                     <button className="btn  text-black btn-outline-warning" onClick={() => filterProduct("women's clothing")}>{`Women's Clothing`}</button>
@@ -85,9 +83,9 @@ export default function Product() {
                                 </Image>
                                 <div className="card-body p-5">
 
-                                    <h4 className="card-title">{product.title.substring(0, 12)}...</h4>
-                                    <p className="card-text">{product.price}</p>
-                                    <Link href={`/product/${product.id}`} className="card-link">Buy Now</Link>
+                                    <h4 className="card-title fw-bold text-xl">{product.title.substring(0, 12)}...</h4>
+                                    <p className="card-text fw-bold text-2xl">{product.price}</p>
+                                    <Link href={`/product/${product.id}`} className="card-link">Read More</Link>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +98,10 @@ export default function Product() {
     return (
         <div>
             <Container>
-                <div className="flex justify-center items-center mt-15 sm:mt-20 md:mt-28 ">
+                <div className=" justify-center items-center mt-15 sm:mt-20 md:mt-28 ">
+
+                <h1 className="text-5xl sm:text-6xl md:text-7xl   lg:text-8xl text-yellow-400 hover:text-secondary uppercase text-center items-center" style={{letterSpacing:6}}>Shop Our Latest Products</h1>
+
                     {
                         loading ? <Loading /> : <ShowProducts />
                     }

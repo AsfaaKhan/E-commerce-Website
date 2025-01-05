@@ -2,7 +2,8 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { TbShoppingBagCheck } from "react-icons/tb"; import { TbShoppingBag } from "react-icons/tb";
+import { TbShoppingBagCheck } from "react-icons/tb";
+import { TbShoppingBag } from "react-icons/tb";
 import { FaHome } from "react-icons/fa";
 import { RiContactsFill } from "react-icons/ri";
 import { FaBookReader } from "react-icons/fa";
@@ -10,19 +11,15 @@ import { GiShoppingBag } from "react-icons/gi";
 import { CgLogIn } from "react-icons/cg";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { FaOpencart } from "react-icons/fa6";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/reducers"; 
 
 
 export default function Header() {
-         const state = useSelector((state:RootState)=> state.handleAddToCart)
-
 
     const [navbar, setNavbar] = useState(false)
     const handleNavbar = () => {
         setNavbar(!navbar)
     }
-    
+
     return (
         <>
             {/* NAVBAR */}
@@ -70,10 +67,10 @@ export default function Header() {
 
                         </Link>
 
-                        <Link href={"/"} className="text-black hover:text-white d">
+                        <Link href={"/cartPage"} className="text-black hover:text-white d">
                             <div className=" flex gap-1 justify-center items-center text-center text-slate-950 hover:text-primary">
                                 <FaOpencart size={15} />
-                                Cart({state.length})
+                                Cart(0)
                             </div>
                         </Link>
                     </div>
