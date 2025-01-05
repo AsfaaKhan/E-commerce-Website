@@ -78,18 +78,18 @@ export default function Product() {
                 <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
                     {filter.map((product, index) => (
                         <div key={index}>
-                            <div className="card w-300 h-100 mb-4 flex flex-col justify-center items-center text-center p-5 hover:scale-105 transition-transform ease-out duration-700">
+                            <div className="card w-300 h-100 mb-4 flex flex-col justify-center items-center text-center p-5 hover:scale-105 transition-transform ease-out duration-700 shadow-md">
                                 <Image src={product.image} alt={product.title} width={300} height={300} className="h-[300px]">
                                 </Image>
                                 <div className="card-body p-5">
-                                    <h1 className="lead uppercase">
+                                    <h1 className="lead uppercase text-warning">
                                         {product.category}
                                     </h1>
                                     <h4 className="card-title fw-bold text-xl">{product.title.substring(0, 12)}</h4>
                                     <p className="card-text fw-bold text-2xl">
                                         ${product.price}</p>
                                     <p className="line-clamp-2 ">{product.description}...</p>
-                                    <Link href={`/product/${product.id}`} className="card-link">Read More</Link>
+                                    <Link href={`/product/${product.id}`} className="text-black fw-bold  hover:text-warning">Read More</Link>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@ export default function Product() {
     return (
         <div>
             <Container>
-                <div className=" justify-center items-center mt-24 md:mt-28 ">
+                <div className=" justify-center items-center mt-24 md:mt-28 mb-24 ">
 
                     <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  text-yellow-400 hover:text-secondary text-center ">
                         {` "New Season, New Glamorous You"`}
