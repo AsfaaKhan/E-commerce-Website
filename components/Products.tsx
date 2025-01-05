@@ -82,9 +82,13 @@ export default function Product() {
                                 <Image src={product.image} alt={product.title} width={300} height={300} className="h-[300px]">
                                 </Image>
                                 <div className="card-body p-5">
-
-                                    <h4 className="card-title fw-bold text-xl">{product.title.substring(0, 12)}...</h4>
-                                    <p className="card-text fw-bold text-2xl">{product.price}</p>
+                                    <h1 className="lead uppercase">
+                                        {product.category}
+                                    </h1>
+                                    <h4 className="card-title fw-bold text-xl">{product.title.substring(0, 12)}</h4>
+                                    <p className="card-text fw-bold text-2xl">
+                                        ${product.price}</p>
+                                     <p className="line-clamp-2 ">{product.description}...</p>   
                                     <Link href={`/product/${product.id}`} className="card-link">Read More</Link>
                                 </div>
                             </div>
