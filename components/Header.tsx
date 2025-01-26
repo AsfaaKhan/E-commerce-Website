@@ -11,11 +11,13 @@ import { GiShoppingBag } from "react-icons/gi";
 import { CgLogIn } from "react-icons/cg";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { FaOpencart } from "react-icons/fa6";
+import { useCart } from "@/app/context/CartContext";
 
 
 export default function Header() {
 
     const [navbar, setNavbar] = useState(false)
+    const {cartItems} = useCart();
     const handleNavbar = () => {
         setNavbar(!navbar)
     }
@@ -60,18 +62,21 @@ export default function Header() {
                             </div>
                         </Link>
 
-                        <Link href={"/"} className="text-black hover:text-white hidden md:flex">
+                        <Link href={"/"} className=" text-black hover:text-white hidden md:flex">
                             <div className="flex gap-1 justify-center items-center text-center text-slate-950 hover:text-primary">
                                 <IoPersonAddSharp size={10} />Resgister
                             </div>
 
                         </Link>
 
-                        <Link href={"/cartPage"} className="text-black hover:text-white d">
-                            <div className=" flex gap-1 justify-center items-center text-center text-slate-950 hover:text-primary">
-                                <FaOpencart size={15} />
-                                Cart(0)
+                        <Link href={"/cart"} className=" relative text-black hover:text-white d">
+                        <FaOpencart size={25} />
+                        {cartItems.length > 0 && (
+                            <div className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                               {cartItems.length}
                             </div>
+                        )}
+                            
                         </Link>
                     </div>
                 </div>

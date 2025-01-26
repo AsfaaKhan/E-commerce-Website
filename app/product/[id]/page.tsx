@@ -5,12 +5,13 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Image from "next/image";
 import { IoIosStar } from "react-icons/io";
-// import { useDispatch } from "react-redux";
-// import { addItem } from "@/redux/actions";
+import { useCart } from "@/app/context/CartContext";
+import Link from "next/link";
 
 
 interface ISingleProduct {
-    id: number,
+    id: string,
+    quantity:number,
     title: string,
     price: number,
     description: string,
@@ -20,7 +21,6 @@ interface ISingleProduct {
         rate: number,
         count: number,
     }
-
 }
 
 
@@ -34,22 +34,8 @@ export default function Product({ params }: ProductDetailsProps) {
     const { id } = params
     const [product, setProduct] = useState<ISingleProduct | null>(null);
     const [loading, setLoading] = useState(true)
-     
+    const {addToCart}  = useCart()
    
-
-
-    // const dispatch = useDispatch();
-    // const handleAddToCart = () => {
-    //     if (product) {
-    //         dispatch(addItem({
-    //             id: product.id,
-    //             title: product.title,
-    //             price: product.price,
-    //             image: product.image,
-    //             quantity: 0
-    //         }));
-    //     }
-    // };
     useEffect(() => {
         const fetchProduct = async () => {
             setLoading(true);
@@ -62,6 +48,11 @@ export default function Product({ params }: ProductDetailsProps) {
         }
         fetchProduct()
     }, [id])
+       
+    const handleAddToCart = (product: ISingleProduct) => {
+        addToCart(product);
+        alert(`${product.title} added to cart!`);
+    };
 
 
     const Loading = () => {
@@ -130,11 +121,15 @@ export default function Product({ params }: ProductDetailsProps) {
 
                         {/* Cart Buttons */}
                         <div className=" flex ">
-                            <button className=" text-dark fw-bold btn btn-outline-warning font-bold shadow-md  text-[48px] px-4 py-2">
+                            <button
+                            onClick={()=>handleAddToCart(product)}
+                            className=" text-dark fw-bold btn btn-outline-warning font-bold shadow-md  text-[48px] px-4 py-2">
                                 Add To Cart
                             </button>
+
                             <button className="fw-bold ms-2 text-dark btn btn-outline-warning font-bold shadow-md px-4 py-2 ">
-                                Go To Cart
+                                <Link href="/cart"> Go To Cart</Link>
+                               
                             </button>
                         </div>
 
